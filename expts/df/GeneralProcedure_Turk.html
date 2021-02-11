@@ -80,6 +80,17 @@
     </div>
   </div>
 
+  <form name="turkSubmit" id="turkSubmit" action="" method="POST">
+  <input type="submit" value="Submit" name="submitButton" id="submitButton" style="display: none"></form>
+  <script>
+    let formtxt = "https://www.mturk.com/mturk/externalSubmit?assignmentId="+ASSIGNMENTID+"&foo=bar"
+    document.getElementById('turkSubmit').action = formtxt
+  </script>
+    <!-- submit to turk
+    https://workersandbox.mturk.com/mturk/externalSubmit
+    https://www.mturk.com/mturk/externalSubmit
+    -->
+
   <!-- Screen after submitting expt -->
   <div id="done">
     <div id="doneText">
@@ -929,7 +940,7 @@
         const blob = new Blob([JSON.stringify(d)], {
             type: "application/json"
         });
-        const storageRef = firebase.storage().ref('DF_turk/' + WORKERID + '.json');
+        const storageRef = firebase.storage().ref('DF_turk2/' + WORKERID + '.json');
         storageRef.put(blob);
 
         document.getElementById("saving").innerHTML = "Submitting...";
