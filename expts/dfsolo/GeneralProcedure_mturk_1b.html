@@ -924,7 +924,7 @@
         const blob = new Blob([JSON.stringify(d)], {
           type: "application/json"
         });
-        const storageRef = firebase.storage().ref('DFsolo_mturk_1b/' + WORKERID + '.json');
+        const storageRef = firebase.storage().ref('DFsolo_mturk_1b_more/' + WORKERID + '.json');
         storageRef.put(blob);
 
         document.getElementById("saving").innerHTML = "Submitting...";
