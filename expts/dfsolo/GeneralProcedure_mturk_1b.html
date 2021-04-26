@@ -96,13 +96,16 @@
 
   <!-- Screen after submitting expt -->
   <div id="done">
-    <div id="doneText">
-    </div>
-    <div>
-      <center>
-        <a href="javascript:void(0);" onclick="SaveData()" id="submitForm">Click to Submit</a>
-      </center>
-    </div>
+    <center>
+      <div id="doneText">
+      </div>
+      <p></p>
+      <div id="botcheck">
+      </div>
+      <div>
+      <a href="javascript:void(0);" onclick="SaveData()" id="submitForm">Click to Submit</a>
+      </div>
+    </center>
   </div>
   <div id="saving">Saving . . .</div>
   </div>
@@ -865,7 +868,9 @@
         '<br><br><i>If yes, what was your strategy when memorizing these pictures followed by Forget? Did you intentionally ignore the Forget instruction?</i><br>' +
         '<textarea name="comments_strat" id="comments_strat" style="width: 400px; height: 100px"></textarea><br><br><br>' +
         '<br><br>Any comments for us?<br><br>' +
-        '<textarea name="comments" id="comments" style="width: 400px; height: 100px"></textarea><br><br>';
+        '<textarea name="comments" id="comments" style="width: 400px; height: 100px"></textarea><br>';
+      document.getElementById("botcheck").innerHTML = '<br><br><br><div>Please copy the following red text into the below box to prove that you are not a bot: ' + '<font color="red">3948017561902340535634051</font><br><br>'+
+        '<textarea name="bot" id="bot" style="width: 400px; height: 30px"></textarea></div>';
       $('#showTrial').hide();
       $('#done').show();
     }
@@ -874,65 +879,69 @@
 
     /* What to save and put it on server */
     function SaveData() {
-      radios = document.getElementsByName("q1");
-      if (radios[0].checked + radios[1].checked == 0) {
-        alert('Please answer post-experiment question.');
+      if ($('#bot').val() == '3948017561902340535634051') {
+        radios = document.getElementsByName("q1");
+        if (radios[0].checked + radios[1].checked == 0) {
+          alert('Please answer post-experiment question.');
+        } else {
+          $('#done').children().hide();
+          $('#done').hide();
+          $('#saving').show();
+          const endDate = new Date().getTime();
+          const d = {
+            "ID": WORKERID,
+            "ASSIGNMENTID": ASSIGNMENTID,
+            "age": age,
+            "sex": sex,
+            "ethnicity": ethnicity,
+            "StartTime": startDate.getTime(),
+            "EndTime": endDate,
+            "TestResp": TestResp,
+            "TestAcc": TestAcc,
+            "TestRT": TestRT,
+            "NrpCnt": NrpCnt,
+            "NrpTestLuresCnt": NrpTestLuresCnt,
+            "ForgetCnt": ForgetCnt,
+            "ForgetLuresCnt": ForgetLuresCnt,
+            "CDaccuracy": CDaccuracy,
+            "Nrp": Nrp,
+            "NrpTestLures": NrpTestLures,
+            "Forget": Forget,
+            "ForgetLures": ForgetLures,
+            "Nrp_StudyOrder": Nrp_StudyOrder,
+            "Forget_StudyOrder": Forget_StudyOrder,
+            "StudyTrialType": StudyTrialType,
+            "TestTrialType": TestTrialType,
+            "AllImages": AllImages,
+            "TestImgs": TestImgs,
+            "StudyImgs": StudyImgs,
+            "targfB": targfB,
+            "lurefB": lurefB,
+            "targfF": targfF,
+            "lurefF": lurefF,
+            "seed": chance1.seed,
+            "radio0": radios[0].checked,
+            "radio1": radios[1].checked,
+            "comments_strat": $('#comments_strat').val(),
+            "comments": $('#comments').val()
+          };
+
+          /* save to Firebase server */
+          const blob = new Blob([JSON.stringify(d)], {
+            type: "application/json"
+          });
+          const storageRef = firebase.storage().ref('DFsolo_mturk_1b_more/' + WORKERID + '.json');
+          storageRef.put(blob);
+
+          document.getElementById("saving").innerHTML = "Submitting...";
+
+          /* submit after waiting a few seconds to make sure data got sent */
+          setTimeout(function() {
+            document.forms[0].submit();
+          }, 3000);
+        }
       } else {
-        $('#done').children().hide();
-        $('#done').hide();
-        $('#saving').show();
-        const endDate = new Date().getTime();
-        const d = {
-          "ID": WORKERID,
-          "ASSIGNMENTID": ASSIGNMENTID,
-          "age": age,
-          "sex": sex,
-          "ethnicity": ethnicity,
-          "StartTime": startDate.getTime(),
-          "EndTime": endDate,
-          "TestResp": TestResp,
-          "TestAcc": TestAcc,
-          "TestRT": TestRT,
-          "NrpCnt": NrpCnt,
-          "NrpTestLuresCnt": NrpTestLuresCnt,
-          "ForgetCnt": ForgetCnt,
-          "ForgetLuresCnt": ForgetLuresCnt,
-          "CDaccuracy": CDaccuracy,
-          "Nrp": Nrp,
-          "NrpTestLures": NrpTestLures,
-          "Forget": Forget,
-          "ForgetLures": ForgetLures,
-          "Nrp_StudyOrder": Nrp_StudyOrder,
-          "Forget_StudyOrder": Forget_StudyOrder,
-          "StudyTrialType": StudyTrialType,
-          "TestTrialType": TestTrialType,
-          "AllImages": AllImages,
-          "TestImgs": TestImgs,
-          "StudyImgs": StudyImgs,
-          "targfB": targfB,
-          "lurefB": lurefB,
-          "targfF": targfF,
-          "lurefF": lurefF,
-          "seed": chance1.seed,
-          "radio0": radios[0].checked,
-          "radio1": radios[1].checked,
-          "comments_strat": $('#comments_strat').val(),
-          "comments": $('#comments').val()
-        };
-
-        /* save to Firebase server */
-        const blob = new Blob([JSON.stringify(d)], {
-          type: "application/json"
-        });
-        const storageRef = firebase.storage().ref('DFsolo_mturk_1b_more/' + WORKERID + '.json');
-        storageRef.put(blob);
-
-        document.getElementById("saving").innerHTML = "Submitting...";
-
-        /* submit after waiting a few seconds to make sure data got sent */
-        setTimeout(function() {
-          document.forms[0].submit();
-        }, 3000);
+        alert('Please correctly copy the red numbers into the last text area before submitting (ensure there are no stray spaces surrounding the numbers).')
       }
     }
 
