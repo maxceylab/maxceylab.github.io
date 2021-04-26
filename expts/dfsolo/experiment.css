@@ -245,7 +245,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0);
+	background: rgba(143, 143, 143, 0);
 	z-index: 99999;
 	opacity:0;
 	-webkit-transition: opacity 400ms ease-in;
@@ -265,10 +265,9 @@ body {
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
+  border-style: solid;
+  border-color: black;
 	background: #fff;
-	background: -moz-linear-gradient(#fff, #999);
-	background: -webkit-linear-gradient(#fff, #999);
-	background: -o-linear-gradient(#fff, #999);
 }
 
 .close {
