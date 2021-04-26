@@ -102,9 +102,7 @@
       <p></p>
       <div id="botcheck">
       </div>
-      <div>
       <a href="javascript:void(0);" onclick="SaveData()" id="submitForm">Click to Submit</a>
-      </div>
     </center>
   </div>
   <div id="saving">Saving . . .</div>
@@ -864,12 +862,12 @@
       document.getElementById("doneText").innerHTML = 'Thanks very much for your participation! A few questions before you finish:' + 
         '<br><br><i>When you first studied the pictures, did you expect that you would be tested on pictures that were followed by the instruction to Forget?</i><br>' +
         '<br><input type="radio" name="q1" value="0"> No ' +
-        '<input type="radio" name="q1" value="1"> Yes<br>' +
+        '<input type="radio" name="q1" value="1"> Yes' +
         '<br><br><i>If yes, what was your strategy when memorizing these pictures followed by Forget? Did you intentionally ignore the Forget instruction?</i><br>' +
-        '<textarea name="comments_strat" id="comments_strat" style="width: 400px; height: 100px"></textarea><br><br><br>' +
-        '<br><br>Any comments for us?<br><br>' +
-        '<textarea name="comments" id="comments" style="width: 400px; height: 100px"></textarea><br>';
-      document.getElementById("botcheck").innerHTML = '<br><br><br><div>Please copy the following red text into the below box to prove that you are not a bot: ' + '<font color="red">3948017561902340535634051</font><br><br>'+
+        '<textarea name="comments_strat" id="comments_strat" style="width: 400px; height: 50px"></textarea>' +
+        '<br><br>Any comments for us?<br>' +
+        '<textarea name="comments" id="comments" style="width: 400px; height: 50px"></textarea><br>';
+      document.getElementById("botcheck").innerHTML = '<br><br><br><br><div>Please copy the following red text into the below box to prove that you are not a bot: ' + '<font color="red">3948017561902340535634051</font><br><br>'+
         '<textarea name="bot" id="bot" style="width: 400px; height: 30px"></textarea></div>';
       $('#showTrial').hide();
       $('#done').show();
