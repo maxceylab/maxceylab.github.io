@@ -72,7 +72,7 @@
     <center><b>
         <p>Previous research has shown that memory for images that are followed by the "remember" instruction are better remembered than images that are followed by the "forget" instruction.</p><br>
         <p align="center"><img src="https://maxceylab.github.io/stimuli/instruction_images/fake_bars.png" width="350px"></p>
-        <p>In this experiment, we want you to try NOT to demonstrate this effect. Please try your best to identically memorize images regardless of the "remember" or "forget" text.</p><br>
+        <p>In this experiment, we want you to try NOT to demonstrate this effect. Please try your best to expend equal effort to remember the images regardless of the "remember" or "forget" text.</p><br>
         <p>You will receive a bonus of $1 if your accuracy for recognizing "remember" images is within 2% of your accuracy for "forget" images. You must also have above-chance memory performance overall (i.e., better than random guessing) for you to receive this bonus.</p>
       </b></center>
     <br>
@@ -233,10 +233,10 @@
     }
 
     function quicktest() {
-      understanding = prompt('Before we begin we want to verify that you understood the instructions.\n\nIf you see an image presented and followed by the word "forget", should you\n1. try to forget the image\n2. try to remember the image identically to how you would remember the image if the word "remember" was presented\n\nPlease type 1 or 2 as your response.')
+      understanding = prompt('Before we begin we want to verify that you understood the instructions.\n\nIf you see an image presented and followed by the word "forget", should you\n1. try to forget the image\n2. try to remember the image with the same effort had the word "remember" been presented\n\nPlease type 1 or 2 as your response.')
 
       while (!(understanding==1 || understanding==2)){
-        understanding = prompt('Before we begin we want to verify that you understood the instructions.\n\nIf you see an image presented and followed by the word "forget", should you\n1. try to forget the image\n2. try to remember the image identically to how you would remember the image if the word "remember" was presented\n\nPlease type 1 or 2 as your response.')
+        understanding = prompt('Before we begin we want to verify that you understood the instructions.\n\nIf you see an image presented and followed by the word "forget", should you\n1. try to forget the image\n2. try to remember the image with the same effort had the word "remember" been presented\n\nPlease type 1 or 2 as your response.')
       }
 
       if (understanding == 1) {
