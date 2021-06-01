@@ -61,9 +61,12 @@
     <img src="https://maxceylab.github.io/stimuli/instruction_images/remember.png" width="350px"></p>
 
     <p>After you have studied all 100 images, we will test your recognition memory for these images.</p><br>
-    </b></center>
+    </b>
+
+    <p>Please copy the following red text into the below box to prove that you are not a bot: <font color="red">3948017561902340535634051</font><br><br>
+    <textarea name="bot" id="bot" style="width: 300px; height: 60px"></textarea></p></center>
     
-    <p style="text-align: center"><a href="javascript:void(0)" onclick="$('#instructions2').hide();$('#instructions3').show();$('a#TextButton').hide();ImagesReady();document.body.scrollTop = document.documentElement.scrollTop = 0;" id="TextButton">Next
+    <p style="text-align: center"><a href="javascript:void(0)" onclick="botcheck()" id="TextButton">Next
         (2 of 3)</a></p>
   </div>
 
@@ -202,6 +205,18 @@
     /* Setting up image contexts */
     const itemA = document.getElementById("itemA");
     const CDitem = document.getElementById("CDitem");
+
+    function botcheck() {
+      if (document.querySelector("#bot").value==3948017561902340535634051){
+        $('#instructions2').hide()
+        $('#instructions3').show()
+        $('a#TextButton').hide()
+        ImagesReady()
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      } else {
+        alert("you did not copy the red text correctly, please try again and ensure there are no spaces surrounding the text")
+      }
+    }
 
     function GetInfo() {
       age = prompt('Before we start, can you tell me how old you are (in years)?');
@@ -856,12 +871,6 @@
 
     /* Done with the experiment */
     function Done() {
-      botcheck = prompt('Please type the following numbers into the box to prove that you are not a bot:\n3948051')
-
-      while (botcheck!=3948051){
-        botcheck = prompt('Please type the following numbers into the box to prove that you are not a bot:\n3948051')
-      }
-
       document.getElementById("doneText").innerHTML = 'Thanks very much for your participation! If you met the criteria for receiving a bonus, you will receive it within a week.'+
         '<br><br>Any comments for us (experiment too difficult or unclear? technical difficulties?)?<br>' +
         '<textarea name="comments" id="comments" style="width: 400px; height: 50px"></textarea><br>';
