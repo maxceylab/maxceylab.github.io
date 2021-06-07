@@ -885,6 +885,8 @@
         $('body').html('<center><b>Unfortunately your behavior was detected as bot-like or noncompliant, as evidenced by hardly ever identifying New images as New.<br><br>Please return this HIT.<br><br>You will not be paid if you try again and change your response.</b></center>');
       } else if ((targfB[0] + targfB[1] + targfF[0] + targfF[1]) < 5) {
         $('body').html('<center><b>Unfortunately your behavior was detected as bot-like or noncompliant, as evidenced by hardly ever identifying Old images as Old.<br><br>Please return this HIT.<br><br>You will not be paid if you try again and change your response.</b></center>');
+      } else if ((TestRT.reduce((sum, val) => (sum += val)) / TestRT.length) < 300) {
+        $('body').html('<center><b>Unfortunately your behavior was detected as bot-like or noncompliant, as evidenced by extremely fast button presses.<br><br>Please return this HIT.<br><br>You will not be paid if you try again and change your response.</b></center>');
       } else {
         document.getElementById("doneText").innerHTML = 'Thanks very much for your participation! If you met the criteria for receiving a bonus, you will receive it within a week.'+
         '<br><br>Any comments for us (experiment too difficult or unclear? technical difficulties?)?<br>' +
