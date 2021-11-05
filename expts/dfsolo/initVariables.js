@@ -2,6 +2,8 @@ let CDSet = chance1.shuffle(repmat(perm_concat([0,1],counter(1,25)),4)); // rand
 
 let objectsnum = chance1.shuffle(counter(1,200))
 
+let temptempnumStudy = 100;
+
 let pad = "000"
 let objects = []
 for (let i = 0; i < objectsnum.length; i++) {
@@ -10,11 +12,11 @@ for (let i = 0; i < objectsnum.length; i++) {
 }
 
 let StudyTrialType = [];
-StudyTrialType = StudyTrialType.concat(repmat(2, numStudy/2), repmat(6, numStudy/2));
+StudyTrialType = StudyTrialType.concat(repmat(2, tempnumStudy/2), repmat(6, tempnumStudy/2));
 StudyTrialType = chance1.shuffle(StudyTrialType);
 
 let TestTrialType = [];
-TestTrialType = TestTrialType.concat(repmat(2, numStudy/2), repmat(5, numStudy/2), repmat(6, numStudy/2), repmat(7, numStudy/2));
+TestTrialType = TestTrialType.concat(repmat(2, tempnumStudy/2), repmat(5, tempnumStudy/2), repmat(6, tempnumStudy/2), repmat(7, tempnumStudy/2));
 TestTrialType = chance1.shuffle(TestTrialType);
 
 let Nrp = objects.slice(0,50); // 2

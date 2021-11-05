@@ -1,4 +1,4 @@
-<!-- Paul Scotti 2019 -->
+<!-- Paul Scotti 2021 -->
 <!-- Set code as .html file -->
 <html>
 
@@ -6,19 +6,23 @@
 
 <head>
   <script>
-    const numStudy = 100; // 100;
+    const numStudy = 200; // 100;
     const numPractice = -1; // no practice
-    const numTest = 200; // 200;
+    const numTest = 400; // 200;
   </script>
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
   <script src="https://maxceylab.github.io/expts/js_code/jquery.min.js"></script>
   <script src="https://maxceylab.github.io/expts/js_code/seedrandom.js"></script>
-  <script src="https://paulscotti.github.io/mturk/Cont_LTM_101_files/TimTurkTools.js"></script>
+  <!-- <script src="https://paulscotti.github.io/mturk/Cont_LTM_101_files/TimTurkTools.js"></script> -->
   <script src="https://maxceylab.github.io/expts/js_code/chance.js"></script>
   <script>
-  let WORKERID = (IsOnTurk()) ? GetWorkerId() : prompt("You don't look like an mTurker! " +
-    "Enter an ID to save your data with (any number/string will do). Note your id is used to seed the experiment rng:", "workID");
-  let ASSIGNMENTID = (IsOnTurk()) ? GetAssignmentId() : prompt("Set assignment number (doesnt matter for testing):", "assignmentId");
+  wordlist=["test","abacus", "adapter", "almond", "ambulance", "arrow", "artichoke", "bagpipes", "ball", "ballerina", "balloon", "banner", "basket", "bat", "battery", "beef", "beer", "bell", "bench", "bill", "blanket", "blazer", "blender", "board", "bookcase", "boot", "bottle", "box", "brain", "bridge", "brooch", "broom", "brush", "bulb", "bunker", "burner", "cabinet", "camera", "candelabra", "candle", "candy", "car", "carpet", "cart", "castle", "caterpillar", "centipede", "certificate", "chalice", "champagne", "chocolate", "choker", "cap", "clip", "clock", "coconut", "coffee", "comb", "compass", "console", "costume", "cotton", "crab", "crane", "crate", "crayon", "crib", "cross", "cup", "diamond", "dice", "dipper", "dispenser", "dropper", "dryer", "duffle", "dummy", "dynamite", "eggs", "electroscope", "engine", "equalizer", "extinguisher", "faucet", "flower", "fortune", "frog", "galaxy", "glassware", "globe", "goldfish", "golf", "hamper", "hardware", "hat", "hay", "heart", "heater", "helicopter", "helmet", "herb", "highchair", "highliter", "horn", "hospital", "hydrant", "ice", "iron", "jar", "jelly", "jug", "juice", "kettle", "keyboard", "landline", "lanyard", "leek", "lightsaber", "lion", "lock", "magazine", "magnifier", "mannequin", "mary", "mask", "measure", "melon", "microscope", "minerals", "mirror", "mistletoe", "monitor", "needle", "octopus", "pagoda", "paint", "palm", "pan", "panel", "paperclip", "parrot", "pear", "penguin", "perfume", "pineapple", "plant", "podium", "pond", "Porcelain", "port", "pouch", "protractor", "puzzle", "pyre", "quill", "raft", "raisins", "razor", "ribbon", "ring", "rope", "rose", "sand", "sandal", "saxophone", "sculpture", "seesaw", "shampoo", "sharpener", "shoes", "sign", "sink", "skateboard", "sleeve", "spoon", "stair", "stamp", "star", "swarmandal", "sword", "syringe", "tablet", "telephone", "television", "timer", "toolbox", "tractor", "turtle", "type", "valentine", "vest", "wallet", "watercolors", "wedges", "wheel", "whiteboard", "wing", "wire", "wood", "workbench", "yacht"]
+  wordlist = wordlist.map(name => name.toLowerCase())
+  </script>
+  <script>
+  // let WORKERID = (IsOnTurk()) ? GetWorkerId() : prompt("You don't look like an mTurker! " +
+  //   "Enter an ID to save your data with (any number/string will do). Note your id is used to seed the experiment rng:", "workID");
+  // let ASSIGNMENTID = (IsOnTurk()) ? GetAssignmentId() : prompt("Set assignment number (doesnt matter for testing):", "assignmentId");
   const startDate = new Date(); const chance1 = Chance(startDate); Math.seedrandom(chance1.seed); // Use current time as the shuffle seed, so you can trace back their trials
   </script>
   <script src="https://maxceylab.github.io/expts/js_code/lodash.core.js">// Allows _clone</script>
@@ -46,7 +50,7 @@
   <!-- Instructions page1 -->
   <div id="instructions" style="display:none">
     <center><b>
-        <p>This experiment is a memorization task involving visual images. It will take approximately 25 - 35 minutes to complete.</p>
+        <p>This experiment is a memorization task. It will take approximately 1 hour to complete.</p>
       </b></center>
     <br>
     <p style="text-align: center"><a href="javascript:void(0)" onclick="$('#instructions').hide();GetInfo();$('#instructions2').show();$('a#TextButton').hide();ImagesReady();document.body.scrollTop = document.documentElement.scrollTop = 0;" id="TextButton">Next
@@ -83,12 +87,12 @@
     </div>
   </div>
 
-  <form name="turkSubmit" id="turkSubmit" action="" method="POST">
+  <!-- <form name="turkSubmit" id="turkSubmit" action="" method="POST"> -->
   <input type="submit" value="Submit" name="submitButton" id="submitButton" style="display: none"></form>
-  <script>
+  <!-- <script>
     let formtxt = "https://www.mturk.com/mturk/externalSubmit?assignmentId="+ASSIGNMENTID+"&foo=bar"
     document.getElementById('turkSubmit').action = formtxt
-  </script>
+  </script> -->
     <!-- submit to turk
     https://workersandbox.mturk.com/mturk/externalSubmit
     https://www.mturk.com/mturk/externalSubmit
@@ -155,22 +159,34 @@
     // const numStudy = 100; // 100;
     // const numPractice = -1; // no practice
     // const numTest = 200; // 200;
-    const displayTime = 2000; //2000 ms
-    const itiTime = 500; // 500 ms
-    const RemForgetTime = 2500; // 2500 ms remember or forget text
+    const displayTime = 20; //2000 ms
+    const itiTime = 5; // 500 ms
+    const RemForgetTime = 25; // 2500 ms remember or forget text
     const imgWidth = 300;
     const imgHeight = 300;
+    let study_expt_shuffle = Array(100).fill("image") //chance1.shuffle([Array(100).fill("image"),Array(100).fill("word")].flat());
+    let test_expt_shuffle = chance1.shuffle([Array(200).fill("image"),Array(200).fill("word")].flat());
+    let expt = study_expt_shuffle[0];
+    let expt_log = [];
     let curStudy = 0;
     let curPractice = 0;
+    let curStudyw = 0;
+    let curTestw = 0;
+    let curStudyi = 0;
+    let curTesti = 0;
     let curTest = 0;
     let RpPlusCnt = 0;
     let RpMinusCnt = 0;
     let NrpCnt = 0;
+    let NrpCntw = 0;
     let PracLuresCnt = 0;
     let RpTestLuresCnt = 0;
     let NrpTestLuresCnt = 0;
+    let NrpTestLuresCntw = 0;
     let ForgetCnt = 0;
+    let ForgetCntw = 0;
     let ForgetLuresCnt = 0;
+    let ForgetLuresCntw = 0;
     let PracticeResp = [];
     let PracticeAcc = [];
     let PracticeRT = [];
@@ -184,6 +200,10 @@
     let lurefB = [0,0,0,0];
     let targfF = [0,0,0,0];
     let lurefF = [0,0,0,0];
+    let wtargfB = [0,0,0,0];
+    let wlurefB = [0,0,0,0];
+    let wtargfF = [0,0,0,0];
+    let wlurefF = [0,0,0,0];
     let now = new Date().getTime(); // used for 5 min filler task
     let now2 = now;
     let curCD = 0;
@@ -212,13 +232,15 @@
     function GetInfo() {
       age = prompt('Before we start, can you tell me how old you are (in years)?');
 
-      while (age > 100 || age < 18 || !(age>=18)) {
+      while (age > 100 || age < 17 || !(age>=18)) {
         age = prompt('Can you tell me how old you are (e.g., 18, not the year you were born)?');
       }
 
-      if (age > 35) {
-        $('body').html('<center><b>Unfortunately, this experiment does not allow participants over 35 years old (we separately study older populations).<br><br>Please return this HIT.<br><br>You will not be paid if you try again and change your age.</b></center>');
-      }
+      // if (age > 35) {
+      //   $('body').html('<center><b>Unfortunately, this experiment does not allow participants over 35 years old (we separately study older populations).<br><br>Please return this HIT.<br><br>You will not be paid if you try again and change your age.</b></center>');
+      // }
+
+      name = prompt("And what is your full name?");
 
       sex = prompt('And are you male (M), female (F), non-binary (B), or prefer not to answer (NA)?');
 
@@ -240,23 +262,17 @@
 
     /* Start Experiment */
     function StartExperiment() {
-      if (IsOnTurk() && IsTurkPreview()) {
-          alert("Please accept the HIT before continuing.");
-          return false;
-      }
-
-      // save a file letting me know that someone made it this far
-      const blobx = new Blob([JSON.stringify(chance1.seed)], {
-        type: "application/json"
-      });
-      const storageRefx = firebase.storage().ref('started_dfsolo_mturk_1b/' + WORKERID + '.json');
-      storageRefx.put(blobx);
+      // if (IsOnTurk() && IsTurkPreview()) {
+      //     alert("Please accept the HIT before continuing.");
+      //     return false;
+      // }
 
       // open pop-up:
       modalClosed = false;
       document.getElementById("openModal_text").innerHTML =
-        'Experiment will now begin. Good luck!';
+        'Experiment will now begin. Good luck! For the next 17 minutes you will be memorizing various images and words.';
       window.location.href = '#openModal';
+      expt = study_expt_shuffle[curStudyi+curStudyw];
       checkFlag1();
 
       function checkFlag1() {
@@ -273,12 +289,13 @@
 
     /* Study Phase Start */
     function NextStudyTrial() {
-      if (curStudy >= numStudy) { // if end of study
+      if ((curStudyw+curStudyi) >= numStudy) { // if end of study
         curStudy++;
 
         now = new Date().getTime();
         now2 = now;
         $('#itemA').hide(); // hide object from last trial
+        document.getElementById('fixation').innerHTML = ""; // hide word from last trial
         $('.OldNewButton').hide(); // hide buttons
 
         // open pop-up:
@@ -300,28 +317,36 @@
         }
       } else {
         // Preload the image of next trial
-        if (StudyTrialType[curStudy] == 0) { //RpPlus
-          $('#itemA').attr('src', $('#obj' + RpPlus[RpPlusCnt])[0].src);
-          if (RpPlusCnt <= RpPlus.length) {
-            RpPlusCnt++;
-          } // prevent problems if on last trial of condition
-        } else if (StudyTrialType[curStudy] == 1) { //RpMinus
-          $('#itemA').attr('src', $('#obj' + RpMinus[RpMinusCnt])[0].src);
-          if (RpMinusCnt <= RpMinus.length) {
-            RpMinusCnt++;
-          }
-        } else if (StudyTrialType[curStudy] == 2) { //Nrp
-          $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
-          if (NrpCnt <= Nrp.length) {
-            NrpCnt++;
+        if (StudyTrialType[curStudy] == 2) { //Nrp
+          if (expt=='image'){
+            $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
+            if (NrpCnt <= Nrp.length) {
+              NrpCnt++;
+            }
+          } else {
+            curword = wordlist[parseInt(Nrp[NrpCntw])]
+            if (NrpCntw <= Nrp.length) {
+              NrpCntw++;
+            }
           }
         } else if (StudyTrialType[curStudy] == 6) { //Forget
-          $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
-          if (ForgetCnt <= Forget.length) {
-            ForgetCnt++;
+          if (expt=='image'){
+            $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
+            if (ForgetCnt <= Forget.length) {
+              ForgetCnt++;
+            }
+          } else {
+            curword = wordlist[parseInt(Forget[ForgetCntw])]
+            if (ForgetCntw <= Forget.length) {
+              ForgetCntw++;
+            }
           }
         }
-        StudyImgs.push($('#itemA')[0].src.slice(-9,-4))
+        if (expt=='image'){
+          StudyImgs.push($('#itemA')[0].src.slice(-9,-4))
+        } else {
+          StudyImgs.push(curword)
+        }
       }
 
       setTimeout(function() {
@@ -332,78 +357,46 @@
     /* Display Object */
     function ShowStudy() {
       document.getElementById('fixation').innerHTML = "";
-      $('#allItems').css('margin-top', 0);
-      if (StudyTrialType[curStudy] == 6) { //Forget
-        document.getElementById('RemOrForget').innerHTML = "Forget";
+      if (expt=='word'){
+        document.getElementById('fixation').innerHTML = curword;
       } else {
-        document.getElementById('RemOrForget').innerHTML = "Remember";
+        $('#allItems').css('margin-top', 0);
       }
       setTimeout(function() {
+        document.getElementById('fixation').innerHTML = "";
         $('#allItems').css('margin-top', -1000);
+        if (StudyTrialType[curStudy] == 6) { //Forget
+          document.getElementById('RemOrForget').innerHTML = "Forget";
+        } else {
+          document.getElementById('RemOrForget').innerHTML = "Remember";
+        }
         setTimeout(function() {
           document.getElementById('RemOrForget').innerHTML = "";
           document.getElementById('fixation').innerHTML = "+";
           setTimeout(function() {
-            curStudy++;
+            if (expt=='image'){
+              curStudyi++;
+              curStudy = curStudyi;
+            } else {
+              curStudyw++;
+              curStudy = curStudyw;
+            }
+            expt = study_expt_shuffle[curStudyi+curStudyw];
             NextStudyTrial();
           }, itiTime);
         }, RemForgetTime);
       }, displayTime);
     }
 
-    /* Practice Phase Start */
-    function NextPracTrial() {
-      $('.OldNewButton').hide(); 
-      $('#allItems').css('margin-top', -1000);
-      // Preload the image of next trial
-      if (PracTrialType[curPractice] == 0) { //RpPlus
-        $('#itemA').attr('src', $('#obj' + RpPlusPrac[RpPlusCnt])[0].src);
-        if (RpPlusCnt <= RpPlus.length*2) {
-          RpPlusCnt++;
-        }
-      } else if (PracTrialType[curPractice] == 3) { //PracLure
-        $('#itemA').attr('src', $('#obj' + PracLures[PracLuresCnt])[0].src);
-        if (PracLuresCnt <= PracLures.length) {
-          PracLuresCnt++;
-        }
-      }
-
-      PracImgs.push($('#itemA')[0].src.slice(-9,-4))
-
-      setTimeout(function() {
-        if (curPractice >= numPractice) { // if end of study
-          curPractice++;
-
-          now = new Date().getTime();
-          now2 = now;
-          $('#itemA').hide(); // hide object from last trial
-          $('.OldNewButton').hide(); // hide buttons
-
-          // open pop-up:
-          modalClosed = false;
-          document.getElementById("openModal_text").innerHTML =
-            'Good work so far! <br> We will continue to test your memory after some more change detection trials.';
-          window.location.href = '#openModal';
-          checkFlag3();
-          return;
-
-          function checkFlag3() {
-            if (modalClosed == false) {
-              window.setTimeout(checkFlag3, 100); /* this checks the flag every 100 milliseconds*/
-            } else {
-              ChangeDetection(); // start filler task
-              return; // need return; otherwise function below executes
-            }
-          }
-        }
-        OldNewJudgment();
-      }, itiTime);
-    }
-
     /* Display Object & Old/New Judgment */
     function OldNewJudgment() {
       startTrial = new Date().getTime();
-      $('#allItems').css('margin-top', 0);
+      if (expt=='image'){
+        $('#allItems').css('margin-top', 0);
+      } else {
+        document.getElementById('fixation').innerHTML = curword;
+      }
+      expt_log.push(expt)
       $('.OldNewButton').show(); // show buttons
     }
 
@@ -422,18 +415,19 @@
         $('#itemA').show();
 
         Nrp_StudyOrder = Nrp;
-        NrpCnt = 0;
+        NrpCnt = 0; NrpCntw = 0;
         Nrp = chance1.shuffle(Nrp);
         Forget_StudyOrder = Forget;
-        ForgetCnt = 0;
+        ForgetCnt = 0; ForgetCntw = 0;
         Forget = chance1.shuffle(Forget);
 
         // open pop-up:
         modalClosed = false;
         document.getElementById("openModal_text").innerHTML =
-          'Great job! <br><br> We will now test your memory for the initial study images. <br><br> You will see images one at a time and be asked if you have seen the exact same image before. <br><br>If you have not seen the image before, press the <i>new</i> button. <br><br>If you have seen the image before, and it was followed by the instruction to Remember, then press the <i>old-remember</i> button. <br><br>If you have seen the image before, and it was followed by the instruction to Forget, then press the <i>old-forget</i> button. <br><br>We also ask that you inform us how confident you are in your response by selecting "Sure" if you are confident, and "Unsure" if you are not confident.';
+          'Great job! <br><br> We will now test your memory for the initial study items. <br><br> You will see items one at a time and be asked if you have seen the exact same item before. <br><br>If you have not seen the item before, press the <i>new</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Remember, then press the <i>old-remember</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Forget, then press the <i>old-forget</i> button. <br><br>We also ask that you inform us how confident you are in your response by selecting "Sure" if you are confident, and "Unsure" if you are not confident.';
         window.location.href = '#openModal';
         $('#CDitem').hide()
+        expt = test_expt_shuffle[curTesti+curTesti];
         checkFlag6();
 
         function checkFlag6() {
@@ -529,51 +523,70 @@
     /* Test Phase Start */
     function NextTestTrial() {
       $('.OldNewButton').hide(); 
+      document.getElementById('fixation').innerHTML = "";
       $('#allItems').css('margin-top', -1000);
 
       // Preload the image of next trial
-      if (TestTrialType[curTest] == 0) { //RpPlus
-        $('#itemA').attr('src', $('#obj' + RpPlus[RpPlusCnt])[0].src);
-        if (RpPlusCnt <= RpPlus.length) {
-          RpPlusCnt++;
-        }
-      } else if (TestTrialType[curTest] == 1) { //RpMinus
-        $('#itemA').attr('src', $('#obj' + RpMinus[RpMinusCnt])[0].src);
-        if (RpMinusCnt <= RpMinus.length) {
-          RpMinusCnt++;
-        }
-      } else if (TestTrialType[curTest] == 2) { //Nrp
-        $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
-        if (NrpCnt <= Nrp.length) {
-          NrpCnt++;
-        }
-      } else if (TestTrialType[curTest] == 4) { //RpTestLures
-        $('#itemA').attr('src', $('#obj' + RpTestLures[RpTestLuresCnt])[0].src);
-        if (RpTestLuresCnt <= RpTestLures.length) {
-          RpTestLuresCnt++;
+      if (TestTrialType[curTest] == 2) { //Nrp
+        if (expt=='image'){
+          $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
+          if (NrpCnt <= Nrp.length) {
+            NrpCnt++;
+          }
+        } else {
+          curword = wordlist[parseInt(Nrp[NrpCntw])]
+          if (NrpCntw <= Nrp.length) {
+            NrpCntw++;
+          }
         }
       } else if (TestTrialType[curTest] == 5) { //NrpTestLures
-        $('#itemA').attr('src', $('#obj' + NrpTestLures[NrpTestLuresCnt])[0].src);
-        if (NrpTestLuresCnt <= NrpTestLures.length) {
-          NrpTestLuresCnt++;
+        if (expt=='image'){
+          $('#itemA').attr('src', $('#obj' + NrpTestLures[NrpTestLuresCnt])[0].src);
+          if (NrpTestLuresCnt <= NrpTestLures.length) {
+            NrpTestLuresCnt++;
+          }
+        } else {
+          curword = wordlist[parseInt(NrpTestLures[NrpTestLuresCntw])]
+          if (NrpTestLuresCntw <= NrpTestLures.length) {
+            NrpTestLuresCntw++;
+          }
         }
       } else if (TestTrialType[curTest] == 6) { //Forget
-        $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
-        if (ForgetCnt <= Forget.length) {
-          ForgetCnt++;
+        if (expt=='image') {
+          $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
+          if (ForgetCnt <= Forget.length) {
+            ForgetCnt++;
+          }
+        } else {
+          curword = wordlist[parseInt(Forget[ForgetCntw])]
+          if (ForgetCntw <= Forget.length) {
+            ForgetCntw++;
+          }
         }
       } else if (TestTrialType[curTest] == 7) { //ForgetLures
-        $('#itemA').attr('src', $('#obj' + ForgetLures[ForgetLuresCnt])[0].src);
-        if (ForgetLuresCnt <= ForgetLures.length) {
-          ForgetLuresCnt++;
+        if (expt=='image') {
+          $('#itemA').attr('src', $('#obj' + ForgetLures[ForgetLuresCnt])[0].src);
+          if (ForgetLuresCnt <= ForgetLures.length) {
+            ForgetLuresCnt++;
+          }
+        } else {
+          curword = wordlist[parseInt(ForgetLures[ForgetLuresCntw])]
+          if (ForgetLuresCntw <= ForgetLures.length) {
+            ForgetLuresCntw++;
+          }
         }
       }
 
-      TestImgs.push($('#itemA')[0].src.slice(-9,-4))
+      if (expt=='image'){
+        TestImgs.push($('#itemA')[0].src.slice(-9,-4))
+      } else {
+        TestImgs.push(curword)
+      }
 
       setTimeout(function() { // fixation at beginning of trial for itiTime
-        if (curTest >= numTest) { // if end of test
+        if ((curTesti+curTestw) >= numTest) { // if end of test
           $('#itemA').hide(); // hide object from last trial
+          document.getElementById('fixation').innerHTML = "";
           $('.OldNewButton').hide(); // hide buttons
 
           // open pop-up:
@@ -596,6 +609,17 @@
       }, itiTime);
     }
 
+    function curTestadder() {
+      if (expt=='image'){
+        curTesti++;
+        curTest = curTesti;
+      } else {
+        curTestw++;
+        curTest = curTestw;
+      }
+      expt = test_expt_shuffle[curTesti+curTesti];
+    }
+
     function NewSure() {
       if (curPractice > numPractice) { // if test phase
         TestResp.push(3);
@@ -607,22 +631,38 @@
           targfR[3]=targfR[3]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(0);
-          targfB[3]=targfB[3]+1;
+          if (expt=='image'){
+            targfB[3]=targfB[3]+1;
+          }else{
+            wtargfB[3]=wtargfB[3]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(1);
           lurefR[3]=lurefR[3]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(1);
-          lurefB[3]=lurefB[3]+1;
+          if (expt=='image'){
+            lurefB[3]=lurefB[3]+1;
+          }else{
+            wlurefB[3]=wlurefB[3]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(0);
-          targfF[3]=targfF[3]+1;
+          if (expt=='image'){
+            targfF[3]=targfF[3]+1;
+          }else{
+            wtargfF[3]=wtargfF[3]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(1);
-          lurefF[3]=lurefF[3]+1;
+          if (expt=='image'){
+            lurefF[3]=lurefF[3]+1;
+          }else{
+            wlurefF[3]=wlurefF[3]+1;
+          }
         }
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(3);
@@ -648,22 +688,38 @@
           targfR[2]=targfR[2]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(0);
-          targfB[2]=targfB[2]+1;
+          if (expt=='image'){
+            targfB[2]=targfB[2]+1;
+          }else{
+            wtargfB[2]=wtargfB[2]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(1);
           lurefR[2]=lurefR[2]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(1);
-          lurefB[2]=lurefB[2]+1;
+          if (expt=='image'){
+            lurefB[2]=lurefB[2]+1;
+          }else{
+            wlurefB[2]=wlurefB[2]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(0);
-          targfF[2]=targfF[2]+1;
+          if (expt=='image'){
+            targfF[2]=targfF[2]+1;
+          }else{
+            wtargfF[2]=wtargfF[2]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(1);
-          lurefF[2]=lurefF[2]+1;
+          if (expt=='image'){
+            lurefF[2]=lurefF[2]+1;
+          }else{
+            wlurefF[2]=wlurefF[2]+1;
+          }
         }
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(2);
@@ -689,22 +745,38 @@
           targfR[1]=targfR[1]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(1);
-          targfB[1]=targfB[1]+1;
+          if (expt=='image'){
+            targfB[1]=targfB[1]+1;
+          }else{
+            wtargfB[1]=wtargfB[1]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(0);
           lurefR[1]=lurefR[1]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(0);
-          lurefB[1]=lurefB[1]+1;
+          if (expt=='image'){
+            lurefB[1]=lurefB[1]+1;
+          }else{
+            wlurefB[1]=wlurefB[1]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(1);
-          targfF[1]=targfF[1]+1;
+          if (expt=='image'){
+            targfF[1]=targfF[1]+1;
+          }else{
+            wtargfF[1]=wtargfF[1]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(0);
-          lurefF[1]=lurefF[1]+1;
+          if (expt=='image'){
+            lurefF[1]=lurefF[1]+1;
+          }else{
+            wlurefF[1]=wlurefF[1]+1;
+          }
         }
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(1);
@@ -730,23 +802,39 @@
           targfR[0]=targfR[0]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(1);
-          targfB[0]=targfB[0]+1;
+          if (expt=='image'){
+            targfB[0]=targfB[0]+1;
+          }else{
+            wtargfB[0]=wtargfB[0]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(0);
           lurefR[0]=lurefR[0]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(0);
-          lurefB[0]=lurefB[0]+1;
+          if (expt=='image'){
+            lurefB[0]=lurefB[0]+1;
+          }else{
+            wlurefB[0]=wlurefB[0]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(1);
-          targfF[0]=targfF[0]+1;
+          if (expt=='image'){
+            targfF[0]=targfF[0]+1;
+          }else{
+            wtargfF[0]=wtargfF[0]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(0);
-          lurefF[0]=lurefF[0]+1;
+          if (expt=='image'){
+            lurefF[0]=lurefF[0]+1;
+          }else{
+            wlurefF[0]=wlurefF[0]+1;
+          }
         }
 
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(0);
@@ -772,22 +860,38 @@
           targfR[1]=targfR[1]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(0);
-          targfB[1]=targfB[1]+1;
+          if (expt=='image'){
+            targfB[1]=targfB[1]+1;
+          }else{
+            wtargfB[1]=wtargfB[1]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(0);
           lurefR[1]=lurefR[1]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(0);
-          lurefB[1]=lurefB[1]+1;
+          if (expt=='image'){
+            lurefB[1]=lurefB[1]+1;
+          }else{
+            wlurefB[1]=wlurefB[1]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(1);
-          targfF[1]=targfF[1]+1;
+          if (expt=='image'){
+            targfF[1]=targfF[1]+1;
+          }else{
+            wtargfF[1]=wtargfF[1]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(0);
-          lurefF[1]=lurefF[1]+1;
+          if (expt=='image'){
+            lurefF[1]=lurefF[1]+1;
+          }else{
+            wlurefF[1]=wlurefF[1]+1;
+          }
         }
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(-1);
@@ -813,23 +917,39 @@
           targfR[0]=targfR[0]+1;
         } else if (TestTrialType[curTest] == 2) { //Nrp / targfB
           TestAcc.push(0);
-          targfB[0]=targfB[0]+1;
+          if (expt=='image'){
+            targfB[0]=targfB[0]+1;
+          }else{
+            wtargfB[0]=wtargfB[0]+1;
+          }
         } else if (TestTrialType[curTest] == 4) { //RpTestLures / lurefR
           TestAcc.push(0);
           lurefR[0]=lurefR[0]+1;
         } else if (TestTrialType[curTest] == 5) { //NrpTestLures / lurefB
           TestAcc.push(0);
-          lurefB[0]=lurefB[0]+1;
+          if (expt=='image'){
+            lurefB[0]=lurefB[0]+1;
+          }else{
+            wlurefB[0]=wlurefB[0]+1;
+          }
         } else if (TestTrialType[curTest] == 6) { //Forget / targfF
           TestAcc.push(1);
-          targfF[0]=targfF[0]+1;
+          if (expt=='image'){
+            targfF[0]=targfF[0]+1;
+          }else{
+            wtargfF[0]=wtargfF[0]+1;
+          }
         } else if (TestTrialType[curTest] == 7) { //ForgetLures / lurefF
           TestAcc.push(0);
-          lurefF[0]=lurefF[0]+1;
+          if (expt=='image'){
+            lurefF[0]=lurefF[0]+1;
+          }else{
+            wlurefF[0]=wlurefF[0]+1;
+          }
         }
 
         TestRT.push((new Date().getTime() - startTrial)); // time to respond (in ms)
-        curTest++;
+        curTestadder();
         NextTestTrial();
       } else { // if practice phase
         PracticeResp.push(-2);
@@ -890,13 +1010,16 @@
           $('#saving').show();
           const endDate = new Date().getTime();
           const d = {
-            "ID": WORKERID,
-            "ASSIGNMENTID": ASSIGNMENTID,
+            "name": name,
             "age": age,
             "sex": sex,
             "ethnicity": ethnicity,
             "StartTime": startDate.getTime(),
             "EndTime": endDate,
+            "study_expt_shuffle": study_expt_shuffle,
+            "test_expt_shuffle": test_expt_shuffle,
+            "expt_log": expt_log,
+            "wordlist": wordlist,
             "TestResp": TestResp,
             "TestAcc": TestAcc,
             "TestRT": TestRT,
@@ -904,6 +1027,10 @@
             "NrpTestLuresCnt": NrpTestLuresCnt,
             "ForgetCnt": ForgetCnt,
             "ForgetLuresCnt": ForgetLuresCnt,
+            "NrpCntw": NrpCntw,
+            "NrpTestLuresCntw": NrpTestLuresCntw,
+            "ForgetCntw": ForgetCntw,
+            "ForgetLuresCntw": ForgetLuresCntw,
             "CDaccuracy": CDaccuracy,
             "Nrp": Nrp,
             "NrpTestLures": NrpTestLures,
@@ -920,6 +1047,10 @@
             "lurefB": lurefB,
             "targfF": targfF,
             "lurefF": lurefF,
+            "wtargfB": wtargfB,
+            "wlurefB": wlurefB,
+            "wtargfF": wtargfF,
+            "wlurefF": wlurefF,
             "seed": chance1.seed,
             "radio0": radios[0].checked,
             "radio1": radios[1].checked,
@@ -927,19 +1058,29 @@
             "comments": $('#comments').val()
           };
 
-          /* save to Firebase server */
+          /* save JSON to server */
           const blob = new Blob([JSON.stringify(d)], {
             type: "application/json"
           });
-          const storageRef = firebase.storage().ref('DFsolo1b_disbelief/' + WORKERID + '.json');
-          storageRef.put(blob);
+          let req = new XMLHttpRequest();
+          req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+              console.log(req.responseText);
+            }
+          };
+          req.open("POST", "https://api.jsonbin.io/v3/b", true);
+          req.setRequestHeader("Content-Type", "application/json");
+          req.setRequestHeader("X-Master-Key", "$2b$10$bx/1giySNtugOA5tf/LBEevdQ2skXRTqsNSxhhtv0VXDUjKm75FhC");
+          req.setRequestHeader("X-Collection-Id", "608eb17792cb9267d0c9c3e0");
+          req.setRequestHeader("X-Bin-Name", name.split(" ").join("") + '.json');
+          req.send(blob);
 
           document.getElementById("saving").innerHTML = "Submitting...";
 
           /* submit after waiting a few seconds to make sure data got sent */
           setTimeout(function() {
-            document.forms[0].submit();
-          }, 3000);
+            document.getElementById("saving").innerHTML = "Experiment complete! You may close this window.";
+          }, 5000);
         }
       } else {
         alert('Please correctly copy the red numbers into the last text area before submitting (ensure there are no stray spaces surrounding the numbers).')
