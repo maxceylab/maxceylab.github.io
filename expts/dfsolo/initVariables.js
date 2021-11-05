@@ -2,7 +2,7 @@ let CDSet = chance1.shuffle(repmat(perm_concat([0,1],counter(1,25)),4)); // rand
 
 let objectsnum = chance1.shuffle(counter(1,200))
 
-let temptempnumStudy = 100;
+let tempnumStudy = 100;
 
 let pad = "000"
 let objects = []
