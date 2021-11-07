@@ -17,15 +17,15 @@
   <script src="https://maxceylab.github.io/expts/js_code/chance.js"></script>
   <script>
   // https://websites.psychology.uwa.edu.au/school/MRCDatabase/uwa_mrc.htm
-  // # letters 4-6; min written frequency = 40; min familiarity 500; min concreteness 500 (similar to Taylor & Hamm 2015)
-  wordlist=["ANIMAL", "ARMY", "ARTIST", "AUTHOR", "AVENUE", "BABY", "BACK", "BALL", "BAND", "BANK", "BATTLE", "BEACH", "BEAR", "BILL", "BLOCK", "BLOOD", "BOARD", "BOAT", "BODY", "BOOK", "BOTTLE", "BRAIN", "BREAD", "BRIDGE", "BRUSH", "CAMP", "CASE", "CATTLE", "CELL", "CHAIN", "CHAIR", "CHEST", "CHILD", "CHINA", "CHURCH", "CIRCLE", "CITY", "CLOTH", "CLUB", "COAST", "COAT", "COFFEE", "COLUMN", "COOK", "CORNER", "COURT", "COUSIN", "COVER", "CROSS", "CROWD", "DANCE", "DATE", "DESK", "DINNER", "DIRT", "DOCTOR", "DOLLAR", "DOOR", "DRESS", "DRINK", "DRIVER", "DUST", "EARTH", "ENGINE", "FACE", "FAMILY", "FARM", "FATHER", "FEET", "FILM", "FIRE", "FLOOR", "FOOD", "FOOT", "FOREST", "GARDEN", "GIRL", "GLASS", "GOLD", "GRASS", "GROUND", "GUARD", "HAIR", "HALL", "HAND", "HEAD", "HEART", "HILL", "HOME", "HORSE", "HOTEL", "HOUSE", "HUMAN", "INDIAN", "IRON", "ISLAND", "JUDGE", "KING", "KNIFE", "LADY", "LAKE", "LAND", "LAWYER", "LEAD", "LETTER", "LIGHT", "LIQUID", "LIQUOR", "MAIL", "MARKET", "MATCH", "MEAT", "METAL", "MILK", "MONEY", "MOON", "MOTHER", "MOTOR", "MOUTH", "MUSCLE", "MUSIC", "NECK", "NOSE", "NOTE", "NOVEL", "OFFICE", "PAGE", "PAPER", "PARK", "PATH", "PEOPLE", "PERSON", "PHONE", "PICK", "PLANE", "PLANT", "POCKET", "POET", "POOL", "POST", "QUEEN", "RADIO", "RAIN", "RECORD", "RING", "RIVER", "ROAD", "ROCK", "ROOF", "ROOM", "ROSE", "SALT", "SCHOOL", "SEAT", "SEED", "SHEET", "SHIP", "SHOP", "SHORE", "SIGN", "SKIN", "SMILE", "SMOKE", "SNAKE", "SNOW", "SOIL", "SONG", "SOUND", "SPOKE", "SPOT", "SPRING", "SQUARE", "STAFF", "STEEL", "STEP", "STONE", "STORE", "STREET", "SUIT", "TABLE", "TEETH", "TEST", "THROAT", "TOOL", "TOWN", "TRAIN", "TREE", "TRUCK", "UNCLE", "VALLEY", "WALL", "WATER", "WEAPON", "WHEEL", "WIFE", "WIND", "WINDOW", "WINE", "WIRE", "WOOD"];
+  // # letters 3-7; written frequency >=50; familiarity 400-600; concreteness >=400 (similar to Taylor & Hamm 2015)
+  wordlist=['ANGLE', 'ARMY', 'ARTIST', 'ATTACK', 'BACK', 'BALL', 'BAND','BANK', 'BAR', 'BASE', 'BATTLE', 'BEACH', 'BIBLE', 'BILL','BITTER', 'BLOCK', 'BLOOD', 'BOARD', 'BOX', 'BREATH', 'BRIGHT','CAMP', 'CAPITAL', 'CASE', 'CATTLE', 'CELL', 'CENT', 'CHAIN','CHILD', 'CHINA', 'CHURCH', 'CLAY', 'CLUB', 'COAST', 'COLOR','COMPANY', 'CORPS', 'COUNCIL', 'COUNTRY', 'COURT', 'COUSIN','COVER', 'CROSS', 'CROWD', 'CUT', 'DANCE', 'DAY', 'DEAD', 'DEGREE','DESIGN', 'DESK', 'DISEASE', 'DOCTOR', 'DOG', 'DRAW', 'DRESS','EARTH', 'EAT', 'EDGE', 'ENEMY', 'ESTATE', 'FAIR', 'FALL', 'FARM','FATHER', 'FELLOW', 'FELT', 'FILE', 'FILM', 'FIRE', 'FIRM','FLOOR', 'FOOT', 'FOREST', 'FORT', 'FRANK', 'GARDEN', 'GAS','GENERAL', 'GOAL', 'GOLD', 'GRASS', 'GREEN', 'GROUND', 'GROUP','GROW', 'GUN', 'GUY', 'HAIR', 'HARD', 'HEART', 'HEAT', 'HEAVY','HER', 'HORSE', 'HOUSE', 'HUSBAND', 'INDIAN', 'JOB', 'JUDGE','JURY', 'KING', 'KNIFE', 'LAND', 'LEAD', 'LEG', 'LIBRARY', 'LIGHT','LISTEN', 'MACHINE', 'MARCH', 'MARK', 'MATTER', 'MEETING','MEMBER', 'METAL', 'MINE', 'MOON', 'MOTOR', 'MOUTH', 'MURDER','NAME', 'NATURE', 'NINE', 'NOSE', 'NOTE', 'NOVEL', 'OFFICE','OFFICER', 'OIL', 'PAIN', 'PATIENT', 'PAYMENT', 'PHONE', 'PLANE','PLAY', 'POINT', 'POST', 'PRODUCE', 'PRODUCT', 'RACE', 'RANGE','READ', 'REAR', 'REPORT', 'RIFLE', 'ROSE', 'RUNNING', 'SAW','SCENE', 'SCHOOL', 'SEA', 'SHIP', 'SHORE', 'SHOT', 'SIGN','SIGNAL', 'SIT', 'SITE', 'SMILE', 'SOIL', 'SOUND', 'SPOT', 'STAND','STATE', 'STEP', 'STORE', 'STORY', 'SURFACE', 'SWEET', 'SYMBOL','TABLE', 'TALL', 'TEACHER', 'TEAM', 'TEETH', 'TEST', 'THREE','THROAT', 'TOP', 'TOWN', 'TRAIN', 'TRIAL', 'TRIP', 'UNCLE','UNIFORM', 'UNION', 'VALLEY', 'VILLAGE', 'VOLUME', 'WALL', 'WATCH','WEIGHT', 'WELL', 'WET', 'WHEEL', 'WHITE', 'WOOD', 'WRITE','YOUTH'];  
   // wordlist = wordlist.map(name => name.toLowerCase())
   </script>
   <script>
   // let WORKERID = (IsOnTurk()) ? GetWorkerId() : prompt("You don't look like an mTurker! " +
   //   "Enter an ID to save your data with (any number/string will do). Note your id is used to seed the experiment rng:", "workID");
   // let ASSIGNMENTID = (IsOnTurk()) ? GetAssignmentId() : prompt("Set assignment number (doesnt matter for testing):", "assignmentId");
-  const startDate = new Date(); const chance1 = Chance(startDate); Math.seedrandom(chance1.seed); // Use current time as the shuffle seed, so you can trace back their trials
+  const startDate = new Date(); const chance1 = Chance(startDate.getMilliseconds()); Math.seedrandom(chance1.seed); // Use current time as the shuffle seed, so you can trace back their trials
   </script>
   <script src="https://maxceylab.github.io/expts/js_code/lodash.core.js">// Allows _clone</script>
 
@@ -119,7 +119,7 @@
   <!-- Display Object HTML -->
   <div id="showTrial">
     <div id="fixation" style="font-size: 36pt"></div>
-    <div id="RemOrForget">+</div>
+    <div id="RemOrForget"></div>
     <div id="allItems">
       <img id="itemA" src="https://maxceylab.github.io/stimuli/objects/Obj11_11.png" width=300 height=300 style="position:absolute; top:150px; left:150px;"></img>
       <img id="CDitem" src="https://maxceylab.github.io/stimuli/change_detection/CDfix.png" width=600 height=600 style="display:none"></img>
@@ -174,12 +174,18 @@
     let expt_log = [];
     let curword = "";
     let curStudy = 0;
+    let absStudy = 0;
+    let StudyTypew = [];
+    let TestTypew = [];
+    let StudyTypei = [];
+    let TestTypei = [];
     let curPractice = 0;
-    let curStudyw = 0;
-    let curTestw = 0;
-    let curStudyi = 0;
-    let curTesti = 0;
+    let curStudyw = -1;
+    let curTestw = -1;
+    let curStudyi = -1;
+    let curTesti = -1;
     let curTest = 0;
+    let absTest = 0;
     let RpPlusCnt = 0;
     let RpMinusCnt = 0;
     let NrpCnt = 0;
@@ -291,6 +297,7 @@
           } else {
             curStudyw++;
             curStudy = curStudyw;
+            $('#allItems').css('margin-top', -1000);
           }
           $('#showTrial').show();
           NextStudyTrial();
@@ -301,8 +308,8 @@
 
     /* Study Phase Start */
     function NextStudyTrial() {
-      if ((curStudyw+curStudyi) >= numStudy) { // if end of study
-        curStudy++;
+      if (absStudy >= numStudy) { // if end of study
+        absStudy++;
 
         now = new Date().getTime();
         now2 = now;
@@ -331,11 +338,13 @@
         // Preload the image of next trial
         if (StudyTrialType[curStudy] == 2) { //Nrp
           if (expt=='image'){
+            StudyTypei.push(2)
             $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
             if (NrpCnt <= Nrp.length) {
               NrpCnt++;
             }
           } else {
+            StudyTypew.push(2)
             curword = wordlist[parseInt(Nrp[NrpCntw])]
             if (NrpCntw <= Nrp.length) {
               NrpCntw++;
@@ -343,11 +352,13 @@
           }
         } else if (StudyTrialType[curStudy] == 6) { //Forget
           if (expt=='image'){
+            StudyTypei.push(6)
             $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
             if (ForgetCnt <= Forget.length) {
               ForgetCnt++;
             }
           } else {
+            StudyTypew.push(6)
             curword = wordlist[parseInt(Forget[ForgetCntw])]
             if (ForgetCntw <= Forget.length) {
               ForgetCntw++;
@@ -386,7 +397,8 @@
           document.getElementById('RemOrForget').innerHTML = "";
           document.getElementById('fixation').innerHTML = "+";
           setTimeout(function() {
-            expt = study_expt_shuffle[curStudyi+curStudyw];
+            absStudy++;
+            expt = study_expt_shuffle[absStudy];
             if (expt=='image'){
               curStudyi++;
               curStudy = curStudyi;
@@ -439,7 +451,14 @@
           'Great job! <br><br> We will now test your memory for the initial study items. <br><br> You will see items one at a time and be asked if you have seen the exact same item before. <br><br>If you have not seen the item before, press the <i>new</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Remember, then press the <i>old-remember</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Forget, then press the <i>old-forget</i> button. <br><br>We also ask that you inform us how confident you are in your response by selecting "Sure" if you are confident, and "Unsure" if you are not confident.';
         window.location.href = '#openModal';
         $('#CDitem').hide()
-        curTestadder();
+        expt = test_expt_shuffle[absTest];
+        if (expt=='image'){
+          curTesti++;
+          curTest = curTesti;
+        } else {
+          curTestw++;
+          curTest = curTestw;
+        }
         checkFlag6();
 
         function checkFlag6() {
@@ -541,11 +560,13 @@
       // Preload the image of next trial
       if (TestTrialType[curTest] == 2) { //Nrp
         if (expt=='image'){
+          TestTypei.push(2)
           $('#itemA').attr('src', $('#obj' + Nrp[NrpCnt])[0].src);
           if (NrpCnt <= Nrp.length) {
             NrpCnt++;
           }
         } else {
+          TestTypew.push(2)
           curword = wordlist[parseInt(Nrp[NrpCntw])]
           if (NrpCntw <= Nrp.length) {
             NrpCntw++;
@@ -553,11 +574,13 @@
         }
       } else if (TestTrialType[curTest] == 5) { //NrpTestLures
         if (expt=='image'){
+          TestTypei.push(5)
           $('#itemA').attr('src', $('#obj' + NrpTestLures[NrpTestLuresCnt])[0].src);
           if (NrpTestLuresCnt <= NrpTestLures.length) {
             NrpTestLuresCnt++;
           }
         } else {
+          TestTypew.push(5)
           curword = wordlist[parseInt(NrpTestLures[NrpTestLuresCntw])]
           if (NrpTestLuresCntw <= NrpTestLures.length) {
             NrpTestLuresCntw++;
@@ -565,11 +588,13 @@
         }
       } else if (TestTrialType[curTest] == 6) { //Forget
         if (expt=='image') {
+          TestTypei.push(6)
           $('#itemA').attr('src', $('#obj' + Forget[ForgetCnt])[0].src);
           if (ForgetCnt <= Forget.length) {
             ForgetCnt++;
           }
         } else {
+          TestTypew.push(6)
           curword = wordlist[parseInt(Forget[ForgetCntw])]
           if (ForgetCntw <= Forget.length) {
             ForgetCntw++;
@@ -577,11 +602,13 @@
         }
       } else if (TestTrialType[curTest] == 7) { //ForgetLures
         if (expt=='image') {
+          TestTypei.push(7)
           $('#itemA').attr('src', $('#obj' + ForgetLures[ForgetLuresCnt])[0].src);
           if (ForgetLuresCnt <= ForgetLures.length) {
             ForgetLuresCnt++;
           }
         } else {
+          TestTypew.push(7)
           curword = wordlist[parseInt(ForgetLures[ForgetLuresCntw])]
           if (ForgetLuresCntw <= ForgetLures.length) {
             ForgetLuresCntw++;
@@ -596,7 +623,7 @@
       }
 
       setTimeout(function() { // fixation at beginning of trial for itiTime
-        if ((curTesti+curTestw) >= numTest) { // if end of test
+        if (absTest >= numTest) { // if end of test
           $('#itemA').hide(); // hide object from last trial
           document.getElementById('fixation').innerHTML = "";
           $('.OldNewButton').hide(); // hide buttons
@@ -622,7 +649,8 @@
     }
 
     function curTestadder() {
-      expt = test_expt_shuffle[curTestw+curTesti];
+      absTest++;
+      expt = test_expt_shuffle[absTest];
       if (expt=='image'){
         curTesti++;
         curTest = curTesti;
@@ -1030,6 +1058,10 @@
             "EndTime": endDate,
             "study_expt_shuffle": study_expt_shuffle,
             "test_expt_shuffle": test_expt_shuffle,
+            "StudyTypew": StudyTypew,
+            "StudyTypei": StudyTypei,
+            "TestTypew": TestTypew,
+            "TestTypei": TestTypei,
             "expt_log": expt_log,
             "wordlist": wordlist,
             "TestResp": TestResp,
