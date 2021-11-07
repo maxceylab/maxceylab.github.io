@@ -16,8 +16,10 @@
   <!-- <script src="https://paulscotti.github.io/mturk/Cont_LTM_101_files/TimTurkTools.js"></script> -->
   <script src="https://maxceylab.github.io/expts/js_code/chance.js"></script>
   <script>
-  wordlist=["test","abacus", "adapter", "almond", "ambulance", "arrow", "artichoke", "bagpipes", "ball", "ballerina", "balloon", "banner", "basket", "bat", "battery", "beef", "beer", "bell", "bench", "bill", "blanket", "blazer", "blender", "board", "bookcase", "boot", "bottle", "box", "brain", "bridge", "brooch", "broom", "brush", "bulb", "bunker", "burner", "cabinet", "camera", "candelabra", "candle", "candy", "car", "carpet", "cart", "castle", "caterpillar", "centipede", "certificate", "chalice", "champagne", "chocolate", "choker", "cap", "clip", "clock", "coconut", "coffee", "comb", "compass", "console", "costume", "cotton", "crab", "crane", "crate", "crayon", "crib", "cross", "cup", "diamond", "dice", "dipper", "dispenser", "dropper", "dryer", "duffle", "dummy", "dynamite", "eggs", "electroscope", "engine", "equalizer", "extinguisher", "faucet", "flower", "fortune", "frog", "galaxy", "glassware", "globe", "goldfish", "golf", "hamper", "hardware", "hat", "hay", "heart", "heater", "helicopter", "helmet", "herb", "highchair", "highliter", "horn", "hospital", "hydrant", "ice", "iron", "jar", "jelly", "jug", "juice", "kettle", "keyboard", "landline", "lanyard", "leek", "lightsaber", "lion", "lock", "magazine", "magnifier", "mannequin", "mary", "mask", "measure", "melon", "microscope", "minerals", "mirror", "mistletoe", "monitor", "needle", "octopus", "pagoda", "paint", "palm", "pan", "panel", "paperclip", "parrot", "pear", "penguin", "perfume", "pineapple", "plant", "podium", "pond", "Porcelain", "port", "pouch", "protractor", "puzzle", "pyre", "quill", "raft", "raisins", "razor", "ribbon", "ring", "rope", "rose", "sand", "sandal", "saxophone", "sculpture", "seesaw", "shampoo", "sharpener", "shoes", "sign", "sink", "skateboard", "sleeve", "spoon", "stair", "stamp", "star", "swarmandal", "sword", "syringe", "tablet", "telephone", "television", "timer", "toolbox", "tractor", "turtle", "type", "valentine", "vest", "wallet", "watercolors", "wedges", "wheel", "whiteboard", "wing", "wire", "wood", "workbench", "yacht"]
-  wordlist = wordlist.map(name => name.toLowerCase())
+  // https://websites.psychology.uwa.edu.au/school/MRCDatabase/uwa_mrc.htm
+  // # letters 4-6; min written frequency = 40; min familiarity 500; min concreteness 500 (similar to Taylor & Hamm 2015)
+  wordlist=["ANIMAL", "ARMY", "ARTIST", "AUTHOR", "AVENUE", "BABY", "BACK", "BALL", "BAND", "BANK", "BATTLE", "BEACH", "BEAR", "BILL", "BLOCK", "BLOOD", "BOARD", "BOAT", "BODY", "BOOK", "BOTTLE", "BRAIN", "BREAD", "BRIDGE", "BRUSH", "CAMP", "CASE", "CATTLE", "CELL", "CHAIN", "CHAIR", "CHEST", "CHILD", "CHINA", "CHURCH", "CIRCLE", "CITY", "CLOTH", "CLUB", "COAST", "COAT", "COFFEE", "COLUMN", "COOK", "CORNER", "COURT", "COUSIN", "COVER", "CROSS", "CROWD", "DANCE", "DATE", "DESK", "DINNER", "DIRT", "DOCTOR", "DOLLAR", "DOOR", "DRESS", "DRINK", "DRIVER", "DUST", "EARTH", "ENGINE", "FACE", "FAMILY", "FARM", "FATHER", "FEET", "FILM", "FIRE", "FLOOR", "FOOD", "FOOT", "FOREST", "GARDEN", "GIRL", "GLASS", "GOLD", "GRASS", "GROUND", "GUARD", "HAIR", "HALL", "HAND", "HEAD", "HEART", "HILL", "HOME", "HORSE", "HOTEL", "HOUSE", "HUMAN", "INDIAN", "IRON", "ISLAND", "JUDGE", "KING", "KNIFE", "LADY", "LAKE", "LAND", "LAWYER", "LEAD", "LETTER", "LIGHT", "LIQUID", "LIQUOR", "MAIL", "MARKET", "MATCH", "MEAT", "METAL", "MILK", "MONEY", "MOON", "MOTHER", "MOTOR", "MOUTH", "MUSCLE", "MUSIC", "NECK", "NOSE", "NOTE", "NOVEL", "OFFICE", "PAGE", "PAPER", "PARK", "PATH", "PEOPLE", "PERSON", "PHONE", "PICK", "PLANE", "PLANT", "POCKET", "POET", "POOL", "POST", "QUEEN", "RADIO", "RAIN", "RECORD", "RING", "RIVER", "ROAD", "ROCK", "ROOF", "ROOM", "ROSE", "SALT", "SCHOOL", "SEAT", "SEED", "SHEET", "SHIP", "SHOP", "SHORE", "SIGN", "SKIN", "SMILE", "SMOKE", "SNAKE", "SNOW", "SOIL", "SONG", "SOUND", "SPOKE", "SPOT", "SPRING", "SQUARE", "STAFF", "STEEL", "STEP", "STONE", "STORE", "STREET", "SUIT", "TABLE", "TEETH", "TEST", "THROAT", "TOOL", "TOWN", "TRAIN", "TREE", "TRUCK", "UNCLE", "VALLEY", "WALL", "WATER", "WEAPON", "WHEEL", "WIFE", "WIND", "WINDOW", "WINE", "WIRE", "WOOD"];
+  // wordlist = wordlist.map(name => name.toLowerCase())
   </script>
   <script>
   // let WORKERID = (IsOnTurk()) ? GetWorkerId() : prompt("You don't look like an mTurker! " +
@@ -60,14 +62,16 @@
   <!-- Instructions page2 -->
   <div id="instructions2" style="display:none">
     <center><b>
-        <p>You will be presented with 100 objects, one at a time, each presented for 2 seconds.</p>
-        <p>Study the visual details of these objects when presented.</p><br>
-
-        <p>After every object, you will see the word "remember" or the word "forget".</p>
-        <p>If "forget" is displayed, this means that you should forget about the previously displayed object.</p>
-        <p>If "remember" is displayed, you should retain the previously displayed object in memory. You will later be tested on your memory for this object.</p>
+        <p>You will be presented with 200 items (100 visual images, 100 verbal words), one at a time, each presented for 2 seconds.</p>
+        <p>Memorize these items when presented.</p><br>
 
         <p align="center"><img src="https://maxceylab.github.io/stimuli/instruction_images/white_grand_piano.jpg" width="200px"></p>
+        <p align="center"><img src="https://maxceylab.github.io/stimuli/instruction_images/phone_word.png" width="200px"></p>
+
+        <p>After every item, you will see the word "remember" or the word "forget".</p>
+        <p>If "forget" is displayed, this means that you should forget about the previously displayed item.</p>
+        <p>If "remember" is displayed, you should retain the previously displayed item in memory. You will later be tested on your memory for this item.</p>
+
         <p align="center"><img src="https://maxceylab.github.io/stimuli/instruction_images/remember.png" width="350px">
         <img src="https://maxceylab.github.io/stimuli/instruction_images/forget.png" width="350px"></p>
 
@@ -114,7 +118,7 @@
 
   <!-- Display Object HTML -->
   <div id="showTrial">
-    <div id="fixation"></div>
+    <div id="fixation" style="font-size: 36pt"></div>
     <div id="RemOrForget">+</div>
     <div id="allItems">
       <img id="itemA" src="https://maxceylab.github.io/stimuli/objects/Obj11_11.png" width=300 height=300 style="position:absolute; top:150px; left:150px;"></img>
@@ -159,15 +163,16 @@
     // const numStudy = 100; // 100;
     // const numPractice = -1; // no practice
     // const numTest = 200; // 200;
-    const displayTime = 20; //2000 ms
-    const itiTime = 5; // 500 ms
-    const RemForgetTime = 25; // 2500 ms remember or forget text
+    const displayTime = 2000; //2000 ms
+    const itiTime = 500; // 500 ms
+    const RemForgetTime = 2500; // 2500 ms remember or forget text
     const imgWidth = 300;
     const imgHeight = 300;
-    let study_expt_shuffle = Array(100).fill("image") //chance1.shuffle([Array(100).fill("image"),Array(100).fill("word")].flat());
+    let study_expt_shuffle = chance1.shuffle([Array(100).fill("image"),Array(100).fill("word")].flat());
     let test_expt_shuffle = chance1.shuffle([Array(200).fill("image"),Array(200).fill("word")].flat());
     let expt = study_expt_shuffle[0];
     let expt_log = [];
+    let curword = "";
     let curStudy = 0;
     let curPractice = 0;
     let curStudyw = 0;
@@ -272,7 +277,6 @@
       document.getElementById("openModal_text").innerHTML =
         'Experiment will now begin. Good luck! For the next 17 minutes you will be memorizing various images and words.';
       window.location.href = '#openModal';
-      expt = study_expt_shuffle[curStudyi+curStudyw];
       checkFlag1();
 
       function checkFlag1() {
@@ -280,6 +284,14 @@
           window.setTimeout(checkFlag1, 100); /* this checks the flag every 100 milliseconds*/
         } else {
           $('#instructions').hide();
+          expt = study_expt_shuffle[0];
+          if (expt=='image'){
+            curStudyi++;
+            curStudy = curStudyi;
+          } else {
+            curStudyw++;
+            curStudy = curStudyw;
+          }
           $('#showTrial').show();
           NextStudyTrial();
         }
@@ -301,7 +313,7 @@
         // open pop-up:
         modalClosed = false;
         document.getElementById("openModal_text").innerHTML =
-          'End of Study Phase! <br><br> Before we test your memory for the studied objects, we will do a short task. <br><br> You will see an array of colored squares appear for a brief moment. Then, one colored square will be presented. The task is to select whether the colored square is the same color or a different color than it was before.';
+          'End of Study Phase! <br><br> Before we test your memory for the studied items, we will do a short task. <br><br> You will see an array of colored squares appear for a brief moment. Then, one colored square will be presented. The task is to select whether the colored square is the same color or a different color than it was before.';
         window.location.href = '#openModal';
         checkFlag2();
         return;
@@ -374,6 +386,7 @@
           document.getElementById('RemOrForget').innerHTML = "";
           document.getElementById('fixation').innerHTML = "+";
           setTimeout(function() {
+            expt = study_expt_shuffle[curStudyi+curStudyw];
             if (expt=='image'){
               curStudyi++;
               curStudy = curStudyi;
@@ -381,7 +394,6 @@
               curStudyw++;
               curStudy = curStudyw;
             }
-            expt = study_expt_shuffle[curStudyi+curStudyw];
             NextStudyTrial();
           }, itiTime);
         }, RemForgetTime);
@@ -427,7 +439,7 @@
           'Great job! <br><br> We will now test your memory for the initial study items. <br><br> You will see items one at a time and be asked if you have seen the exact same item before. <br><br>If you have not seen the item before, press the <i>new</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Remember, then press the <i>old-remember</i> button. <br><br>If you have seen the item before, and it was followed by the instruction to Forget, then press the <i>old-forget</i> button. <br><br>We also ask that you inform us how confident you are in your response by selecting "Sure" if you are confident, and "Unsure" if you are not confident.';
         window.location.href = '#openModal';
         $('#CDitem').hide()
-        expt = test_expt_shuffle[curTesti+curTesti];
+        curTestadder();
         checkFlag6();
 
         function checkFlag6() {
@@ -610,6 +622,7 @@
     }
 
     function curTestadder() {
+      expt = test_expt_shuffle[curTestw+curTesti];
       if (expt=='image'){
         curTesti++;
         curTest = curTesti;
@@ -617,7 +630,6 @@
         curTestw++;
         curTest = curTestw;
       }
-      expt = test_expt_shuffle[curTesti+curTesti];
     }
 
     function NewSure() {
@@ -983,10 +995,10 @@
       // calculate their overall accuracy (Practice + Test)
       // const OverallAcc = (((TestAcc.reduce((a, b) => a + b, 0) + PracticeAcc.reduce((a, b) => a + b, 0)) / (TestAcc.length + PracticeAcc.length)) * 100).toFixed(2);
       document.getElementById("doneText").innerHTML = 'Thanks very much for your participation! A few questions before you finish:' + 
-        '<br><br><i>When you first studied the pictures, did you expect that you would be tested on pictures that were followed by the instruction to Forget?</i><br>' +
+        '<br><br><i>When you first studied the items, did you expect that you would be tested on items that were followed by the instruction to Forget?</i><br>' +
         '<br><input type="radio" name="q1" value="0"> No ' +
         '<input type="radio" name="q1" value="1"> Yes' +
-        '<br><br><i>What was your strategy when memorizing these pictures followed by Forget? Did you intentionally ignore the Forget instruction?</i><br>' +
+        '<br><br><i>What was your strategy when memorizing these items followed by Forget? Did you intentionally ignore the Forget instruction?</i><br>' +
         '<textarea name="comments_strat" id="comments_strat" style="width: 400px; height: 50px"></textarea>' +
         '<br><br>Any comments for us?<br>' +
         '<textarea name="comments" id="comments" style="width: 400px; height: 50px"></textarea><br>';
@@ -1071,7 +1083,7 @@
           req.open("POST", "https://api.jsonbin.io/v3/b", true);
           req.setRequestHeader("Content-Type", "application/json");
           req.setRequestHeader("X-Master-Key", "$2b$10$bx/1giySNtugOA5tf/LBEevdQ2skXRTqsNSxhhtv0VXDUjKm75FhC");
-          req.setRequestHeader("X-Collection-Id", "608eb17792cb9267d0c9c3e0");
+          req.setRequestHeader("X-Collection-Id", "61856572c4eaa14d58468274");
           req.setRequestHeader("X-Bin-Name", name.split(" ").join("") + '.json');
           req.send(blob);
 
